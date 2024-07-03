@@ -1,6 +1,6 @@
 <?php
-
-class Prodotti {
+class Prodotti
+{
 
     public $titolo;
     public $prezzo;
@@ -14,5 +14,4 @@ class Prodotti {
         $this->categoria = $categoria;
         $this->codice = $codice;
     }
-
 }
