@@ -7,8 +7,9 @@ require_once __DIR__ . '/classes/accessori.php';
 
 $cane = new Categorie('cane');
 $gatto = new Categorie('gatto');
-$uccello = new Categorie('uccello');
+$uccelli = new Categorie('uccelli'); 
 $pesci = new Categorie('pesci');
+
 $prodotti = [
     new Cibo('Royal Canin Mini Adult', 15.99, $cane, 'RCMA01'),
     new Cibo('Almo Nature Holistic Maintenance Medium Large Tonno e Riso', 24.99, $cane, 'ANHM02'),
@@ -19,18 +20,40 @@ $prodotti = [
     new Giochi('Kong Classic', 9.99, $cane, 'KC07'),
     new Giochi('Topini di peluche Trixie', 4.99, $gatto, 'TMT08')
 ];
-
 ?>
 
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
     <title>php-oop-2</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
-    
+    <div class="product-cards">
+        <?php foreach ($prodotti as $prodotto) : ?>
+            <div class="product-card">
+                <img src="img/ <?php echo $prodotto->titolo; ?>.jpg" alt="<?php echo $prodotto->titolo; ?>">
+                <h2>
+                    <?php echo $prodotto->titolo; ?>
+                </h2>
+                <p>
+                    Prezzo: €<?php echo number_format($prodotto->prezzo); ?>
+                </p>
+                <p>
+                    Categoria: <?php echo $prodotto->categoria->nome; ?>
+                </p>
+                <p>
+                    Tipo: <?php echo $prodotto->tipo; ?>
+                </p>
+                <p>
+                    Codice Prodotto: <?php echo $prodotto->getDettagli()['codice']; ?>
+                </p>
+            </div>
+        <?php endforeach; ?>
+    </div>
 </body>
+
 </html>
